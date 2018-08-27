@@ -14,7 +14,7 @@ int main(void) {
 	printf("\n");
     	printf("It is safe to delete libhello.so, try it and run me again!\n");
     } else {
-        printf("Could not load library, not crashing!");
+        printf("Could not load library, not crashing!\n");
     }
 
     return 0;
