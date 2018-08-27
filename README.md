@@ -8,7 +8,7 @@ We achieve this by exploiting several mechanisms:
   * GCC's `#pragma weak`
   * GCC's `-fpie` (Position Independent Executable) flag
 
-We use a modified Python ELF parser (courtesy of https://github.com/detailyang/readelf/) to generate a .c file with a `#pragma weak` for each of the exported symbols of a particular .so file. This means that the software author does not have to keep track of what symbols are in use (such as with the `dlsym()` approach) nor does a complicated generator have to be written.
+We use a `readelf` to generate a .c file with a `#pragma weak` for each of the exported symbols of a particular .so file. This means that the software author does not have to keep track of what symbols are in use (such as with the `dlsym()` approach) nor does a complicated generator have to be written.
 
 Instead we *only* `dlopen()` the target library with `RTLD_NOW` and `RTLD_GLOBAL` to overwrite the weak (non-existant!) symbols in the position independent executable.
 
